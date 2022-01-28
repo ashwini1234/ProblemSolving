@@ -1,0 +1,33 @@
+Question: Given an array A of length N, find the maximum distance of j-i such that A[i]<=A[j].
+
+Example 1: A =[3,5,1,4,2]
+          idx=[0,1,2,3,4]
+
+For 3, values of j greater than 3 on the right of 3 are : 5(j-i=1), 4(j-i=3-0=3)
+For 5, nothing bigger than 5 on right, so skip it.
+For 1 , 4(j-i=1) and 2(j-i=4-2=2)
+For 4, nothing bigger than 4 on right, so skip it.
+For 2, nothing on right as its last element, so skip it.
+
+Answer = 3 , elements 3 and 4 from index 0 and 3 respectively.
+
+Brute Force Approach:
+
+Loop over the array taking 0th element and comparing with every other element in the array.
+Take a max variable and keep updating it while looping through the array.
+
+Time Complexity = O(n^2)
+
+Observations:
+
+1. We need to find max value of j-i such that A[i] <= A[j], this means j has to be in right part and likewise i has to be left part.
+
+Example: A =[ 7,2,3,1,8,9,4,5,6]
+
+SInce 2 is to the left of 3, 3 will never be optimal as compared to 2. on the left, 2 would govern the answer.
+Similarly, as compared to 6, 5 will never be optimal. On the right, 6 would govern the answer.
+
+If we create a prefix left min array and prefix right max array and then loop through it till we find max j-i.
+
+TC of this approach = O(n
+SC = O(n) + O(n) = O(n) as we create 2 prefix arrays.
